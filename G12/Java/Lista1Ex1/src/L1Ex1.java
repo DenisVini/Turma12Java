@@ -1,6 +1,4 @@
 import java.util.Scanner;
-
-	
 	public class L1Ex1 {
 		public static void main(String[]args) {
 		
@@ -14,7 +12,13 @@ import java.util.Scanner;
 		
 		
 		
-		
+		//caracter = teclado.next().charAt(0);
+		//next().toUpperCase(); pra transformar letra em maiusculo
+		// e = && 
+		//ou = ||
+		//vetor  String nomes[] = new String[10]; VETOR
+		//		String produtos[] = {"Camisa","Boné"...};
+		//int precos[]=new int[3];
 		
 			
 			System.out.print("Você tem quantos anos: ");
@@ -29,3 +33,4 @@ import java.util.Scanner;
 		}
 	
 }
+	
