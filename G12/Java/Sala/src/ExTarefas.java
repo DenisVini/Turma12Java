@@ -17,7 +17,7 @@ public class ExTarefas {
 			dias[x][dia-1] = leia.next();
 		}
 		
-		System.out.println("Tarefas do "+dia+ "º dia: ");
+		System.out.println("Tarefas do "+dia+ ": ");
 		for (int x=0; x<5; x++)
 		{
 			System.out.println(dias[x][dia-1]);

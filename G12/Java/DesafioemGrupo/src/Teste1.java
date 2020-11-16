@@ -1,252 +1,123 @@
 import java.util.Scanner;
 public class Teste1{
-	public static void main(String[] args) {
-		Scanner read = new Scanner(System.in);
-		// Declaração das váriaveis
-		String produtos[] = { "Arroz de 5Kg", "Arroz de 1Kg", "Feijão de 1kg", "Farofa de 500g", "Nescau de 400g",
-				"Peça de picanha 1kg", "Cartela com 12 Ovos", "Cartela com 24 Ovos", "Coca-Cola 2L",
-				"Coca-Cola 600ml" };
-
-		double precoProd[] = { 30.00, 10.00, 12.00, 6.00, 7.00, 109.99, 12.99, 20.99, 6.35, 4.00 };
-
-		int estoque[] = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
-		int carrinho[] = new int[10];
-		int carrinhoPreco[] = new int[10];
-		int codProduto[] = new int[10];
-
-		int qntProduto;
-		int compraProduto = 0;
-		int contador = 0;
-		int i = 0;
-		int pagamento = 0;
-		int parcela = 0;
-		double precoTotal = 0.0;
-		double z = 0.0;
-
-		String c = "", m = "", r = "", l = "", k = "", j = "", t = "", w = "";
-		char continua;
-		boolean confirmacao = true;
-		boolean validacao = true;
-
-		for (i = 0; i < 10; i++) {
-			codProduto[i] = i;
-		}
-		do {
-			// Mostrando todos os produtos e pedindo pro usuário qual que ele quer
-			for (i = 0; i < 10; i++) {
-				System.out.println("_________________________________________________________\n" + codProduto[i] + " - "
-						+ produtos[i] + "\t\t\tR$:" + precoProd[i]);
-			}
-			System.out.println("_________________________________________________________");
-
-			do {
-				System.out.println("\n\nDigite o código do produto que deseja comprar: ");
-				compraProduto = read.nextInt();
-				if (compraProduto < 0 || compraProduto > 9) {
-					validacao = true;
-				} else {
-					validacao = false;
-				}
-			} while (validacao == true);
-
-			if (compraProduto >= 0 && compraProduto <= 9) {
-				carrinho[contador] = compraProduto;
-				validacao = false;
+	public static void main(String[]args) {
+	
+	String contas[] = { "Conta Poupança", "Conta Corrente", "Conta Especial", "Conta Empresarial" };
+	int conta;
+	int cpf;
+	int talaoCheque = 0;
+	int numTalao = 0;
+	double numConta = 0;
+	double CNPJ = 0;
+	int indice = 0;
+	Scanner leia = new Scanner(System.in);
+	String nome;
+	double emprestimo = 10000;
+	char confirmacao;
+	char confirmacaoC = 'S';
+	double valorEmp;
+	double Saldo = 0;
+	int opcao;
+	int operacao = 0;
+	int opera;
+	double Debito;
+	double Credito;
+	int operacoes = 0;
+	System.out.println("\tBANCO DVLP\n");
+	System.out.println("Digite seu nome: ");
+	nome = leia.next();
+	for (String conte : contas) {
+		System.out.print((indice + 1) + " - ");
+		System.out.println(conte);
+		indice++;
+	}
+	
+	// Coloquei o while aqui, pq se não ele ficaria repetindo apenas o que estava dentro do if, e colocando aqui ele repete as 10 vezes
+	// Só não sei se era assim que vc queria ficar fazendo o laço
+	while (operacoes < 10) {
+		
+	System.out.println("\nEscreva um codigo para a utilização da conta(1/2/3/4): ");
+	conta = leia.nextInt();
+	
+		// CONTA CORRENTE
+		if (conta == 2) {
+			System.out.print("Insira número da conta: ");
+			numConta = leia.nextInt();
+			System.out.print("Insira seu CPF: ");
+			cpf = leia.nextInt();
+			System.out.println("Olá " + nome + " você entrou em sua conta corrente!!");
+			System.out.println("Você dispõe de " + talaoCheque + " talões de cheque");
+			System.out.println("Seu saldo: " + Saldo);
+			System.out.println("Você deseja talões de cheque? ");
+			confirmacao = leia.next().toUpperCase().charAt(0);
+			if (confirmacao == 'S') {
+				System.out.println("Quantos você deseja (1-10)?");
+				numTalao = leia.nextInt();
+				talaoCheque = talaoCheque + numTalao;
+				System.out.println("Você dipõe de " + talaoCheque + "talões de cheque");
 			} else {
-				System.out.println("Digite um código válido");
-				validacao = true;
+				System.out.println(" ");
 			}
-
-			do {
-				System.out.println("Quantos produtos deseja comprar: ");
-				qntProduto = read.nextInt();
-				if (qntProduto > 0 && qntProduto <= 10) {
-					System.out.println("\n" + produtos[compraProduto]);
-					System.out.println("Unidades compradas: " + qntProduto);
-					if (qntProduto < estoque[compraProduto]) {
-						carrinhoPreco[contador] = qntProduto;
-						estoque[compraProduto] = estoque[compraProduto] - qntProduto;
-						System.out.println("O estoque é de: " + estoque[compraProduto] + " unidades");
-					}
-					validacao = false;
-				} else if (qntProduto > 10) {
-					System.out.println("Estoque insuficiente, temos apenas " + estoque[compraProduto] + " produtos");
-					validacao = true;
-
+			operacoes++;
+			System.out.println((operacoes) + "ª Operação em '1' - Crédito / '2' - Débito");
+			operacao = leia.nextInt();
+			if (operacao == 1) {
+				System.out.println("Digite o valor da operação: ");
+				Credito = leia.nextDouble();
+				Saldo = Saldo + Credito;
+				System.out.println("Você tem " + Saldo + "R$ de saldo.");
+			} else if (operacao == 2) {
+				System.out.println("Digite o valor da operação: ");
+				Debito = leia.nextDouble();
+				if (Debito > Saldo) {
+					System.out.println("Você não tem saldo para esta operação de débito.");
 				} else {
-					System.out.println("Quantidade do produto inválida!.");
-					validacao = true;
+					Saldo = Saldo - Debito;
+					System.out.println("Você tem " + Saldo + "R$ de saldo.");
 				}
-
-			} while (validacao == true);
-
-			do {
-				System.out.println("Desejar continuar comprando S/N: ");
-				continua = read.next().toUpperCase().charAt(0);
-				if (continua == 'S' || continua == 'N') {
-					if (continua == 'S') {
-						confirmacao = true;
-						contador++;
-					} else {
-						confirmacao = false;
-					}
-					validacao = false;
-				} else {
-					System.out.println("Digite S/N");
-					validacao = true;
-				}
-			} while (validacao == true);
-		} while (confirmacao == true);
-
-		// carrinho de compras
-		if (contador == 0) {
-			z = precoProd[compraProduto] * qntProduto;
-			System.out.println("0 - " + produtos[carrinho[0]] + "\t\t" + precoProd[carrinho[0]] + "\t\t" + z);
-
-		} else {
-			for (i = 0; i < contador; i++) {
-				z = precoProd[carrinho[i]] * carrinho[i];
-				System.out.println(i + " - " + produtos[carrinho[i]] + "\t\t" + precoProd[carrinho[i]] + "\t\t" + z);
-
 			}
-		}
-
-		System.out.printf("\n\n Total a pagar é de: %.2f Reais\n\n", z);
-		// Formas de pagamento
-
-		do {
-			System.out.println(
-					" _____________________________________________\n|             FORMAS DE PAGAMENTO             |\n|_____________________________________________|\n|1 - Pagamento à vista em dinheiro ou cheque. | \n|_____________________________________________|\n|2 - Pagamento à vista em cartão de crédito.  | \n|_____________________________________________|\n|3 - Pagamento parcelado no Cartão.           | \n|_____________________________________________|\n\n       Digite um número de (1 a 3): ");
-			pagamento = read.nextInt();
-			if (pagamento < 1 || pagamento > 3) {
-				validacao = true;
-			} else {
-				validacao = false;
-			}
-		} while (validacao == true);
-		System.out.println("---D'tudo um Pouco---\n\n\n");
-		if (pagamento == 1) {
-			z = (z + ((z / 100) * 9));
-			z = (z - (z / 100) * 20);
-			System.out.printf("O preço do produto será:  R$ %.2f", z);
-			System.out.println(" -- com acrescimo de 9% de imposto e desconto de 20% devido a forma de pagamento.");
-
-		} else if (pagamento == 2) {
-			z = (z + ((z / 100) * 9));
-			z = (z - (z / 100) * 20);
-			System.out.printf("O preço do produto será:  R$ %.2f", z);
-			System.out.println(" -- com acrescimo de 9% de imposto e desconto de 15% devido a forma de pagamento.");
-
-		} else if (pagamento == 3) {
-			z = (z + ((z / 100) * 19));
-			// PROXIMA VALIDÇÃO
-
-			do {
-				System.out.println("Parcelado em 2 ou 3 vezes ? ");
-				parcela = read.nextInt();
-				if (parcela < 2 || parcela > 3) {
-					validacao = true;
-				} else {
-					validacao = false;
-				}
-			} while (validacao == true);
-
-			if (parcela == 2) {
-				z = (z + (z / 100) * 9);
-				System.out.printf("O preço do produto será de: R$ %.2f", z);
-				System.out.println(" -- com acrescimo de 9% de impostos e sem juros");
-				System.out.println("O preço parcelado em 2 vezes será de:  R$: " + (z / 2));
-			} else {
-				z = (z + (z / 100) * 19);
-				System.out.printf("O preço do produto será de: R$ %.2f", z);
-				System.out.println("-- com acrescimo de 9% de impostos e 10% de juros");
-				System.out.println("O preço parcelado em 3 vezes será de:  R$: " + (z / 3));
-			}
-		}
-
-		l = "À vista, dinheiro ou em cheque";
-		c = "À vista, cartão de credito";
-		m = "Parcelado em 2 vezes";
-		r = "Parcelado em 3 vezes";
-		k = "Impostos de 9% e desconto de 20%";
-		j = "Impostos de 9% e desconto de 15%";
-		t = "com acrescimo de 9% de impostos e sem juros";
-		w = "com acrescimo de 9% de impostos e juros de 10%";
-
-		System.out.println("---D'tudo um Pouco---\n");
-
-		do {
-			System.out.println("    NOTA FISCAL\n");
-			if (pagamento == 1) {
-				if (contador == 0) {
-					System.out.println(produtos[carrinho[0]]);
-					System.out.print("\nQuantidade: " + qntProduto);
-					System.out.print("\n" + k + "\n");
-					System.out.print("\nForma de Pagamento: " + l);
-					System.out.print("\nPreço: " + z + "R$");
-				} else {
-					for (i = 0; i <= contador; i++) {
-						System.out.println(produtos[carrinho[i]] + " - " + carrinhoPreco[i] + " Uni\n");
-					}
-					z = z + precoProd[carrinho[i]] * carrinhoPreco[i];
-					System.out.print("\n" + k + "\n");
-					System.out.print("\nForma de pagamento: " + l);
-					System.out.printf("\nPreço Total: %.2f R$", z);
-						
-				}
-			} else if (pagamento == 2) {
-				if (contador == 0) {
-					System.out.print(produtos[carrinho[0]]);
-					System.out.print("\nQuantidade: " + qntProduto);
-					System.out.print("\n" + j + "\n");
-					System.out.print("\nForma de Pagamento: " + c);
-					System.out.print("\nPreço: " + z + "R$");
-				} else {
-					for (i = 0; i <= contador; i++) {
-						System.out.println(produtos[carrinho[i]] + " - " + carrinhoPreco[i] + " Uni\n");
-					}
-					z = z + precoProd[carrinho[i]] * carrinhoPreco[i];
-					System.out.print("\n" + j + "\n");
-					System.out.print("\nForma de pagamento: " + c);
-					System.out.print("\nPreço Total: " + Math.round(z) + "R$");
-				}
-			} else if (pagamento == 3) {
-				if (parcela == 2) {
-					if (contador == 0) {
-						System.out.print(produtos[carrinho[0]]);
-						System.out.print("\nQuantidade: " + qntProduto);
-						System.out.print("\n" + t + "\n");
-						System.out.print("\nForma de Pagamento: " + m);
-						System.out.print("\nPreço: " + z + "R$");
-					} else {
-						for (i = 0; i <= contador; i++) {
-							System.out.println(produtos[carrinho[i]] + " - " + carrinhoPreco[i] + " Uni\n");
+			
+		// O seu else if da opção 4 estava dentro do if da opção 2, aí só funcionaria se vc entrasse na conta corrente e na operação tu colocasse 4
+		// aí só fechei a chave do if antes do else if, e o while para repetir eu coloquei ele em cima
+		} else if (conta == 4) { // CONTA EMPRESARIAL
+			System.out.println("Digite sua conta: ");
+			numConta = leia.nextInt();
+			System.out.println("Digite seu CNPJ: ");
+			CNPJ = leia.nextDouble();
+			System.out.println("Olá " + nome + " você entrou em sua conta empresarial. ");
+			System.out.println("Dispoibilizamos à você um empréstimo empresarial com o limite de: 10.000R$");
+			System.out.println("Você deseja fazer um empréstimo? 'S'-Sim / 'N'-Não");
+			confirmacao = leia.next().toUpperCase().charAt(0);
+			if (confirmacao == 'S') {
+				System.out.println("Deseja fazer um empréstimo de quanto em R$?");
+				valorEmp = leia.nextDouble();
+				emprestimo = emprestimo - valorEmp;
+				Saldo = valorEmp;
+				System.out.println("Devido ao emprestimo feito você tem disponibilizado " + Saldo
+						+ "R$ de saldo para as operações do dia.");
+			} else if (confirmacao == 'N') {
+				while (operacoes < 4 || Saldo > 0) {
+					System.out.println((operacoes + 1) + "ª Operação em '1' - Débito // '2' - Crédito?");
+					opera = leia.nextInt();
+					if (opera == 1) {
+						System.out.println("Digite o valor da operaçao: ");
+						Debito = leia.nextDouble();
+						if (Debito > Saldo) {
+							System.out.println("Você não tem saldo para esta operação de débito.");
+						} else {
+							Saldo = Saldo - Debito;
+							System.out.println("Você tem " + Saldo + "R$ de saldo.");
 						}
-						z = z + precoProd[carrinho[i]] * carrinhoPreco[i];
-						System.out.print("\n" + t + "\n");
-						System.out.print("\nForma de pagamento: " + m);
-						System.out.print("\nPreço Total: " + Math.round(z) + "R$");
+					} else if (opera == 2) {
+						System.out.println("Digite o valor que deseja creditar em sua conta: ");
+						Credito = leia.nextDouble();
+						Saldo = Saldo + Credito;
+						System.out.println("Você tem " + Saldo + "R$ de saldo.");
 					}
-				}
-			} else if (parcela == 3) {
-				if (contador == 0) {
-					System.out.print(produtos[carrinho[0]]);
-					System.out.print("\nQuantidade: " + qntProduto);
-					System.out.print("\n" + w + "\n");
-					System.out.print("\nForma de Pagamento: " + r);
-					System.out.print("\nPreço: " + z + "R$");
-				} else {
-					for (i = 0; i <= contador; i++) {
-						System.out.println(produtos[carrinho[i]] + " - " + carrinhoPreco[i] + " Uni\n");
-					}
-					z = z + precoProd[carrinho[i]] * carrinhoPreco[i];
-					System.out.print("\n" + w + "\n");
-					System.out.print("\nForma de pagamento: " + r);
-					System.out.print("\nPreço por parcela: " + (z / 3) + "R$");
-					System.out.print("\nPreço total: " + Math.round(z) + "R$");
+					operacoes++;
 				}
 			}
-
-		} while (confirmacao == true);
+		}
+	}
 	}
 }
