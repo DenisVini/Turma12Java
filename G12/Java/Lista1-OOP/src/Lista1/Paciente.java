@@ -12,7 +12,7 @@ public class Paciente {
 	}
 	public void Paciente(char estado) 
 	{
-		
+		this.estado = estado ;
 	}
 	
 }
