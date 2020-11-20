@@ -7,8 +7,10 @@ public class Administrador extends Pessoa {
 	public Administrador() {
 		
 	}
-	public Administrador(String nome) {
-		
+
+	public Administrador(int ajudaDeCusto) {
+		super();
+		this.ajudaDeCusto = ajudaDeCusto;
 	}
 	
 }

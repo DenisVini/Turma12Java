@@ -79,7 +79,6 @@ public class BancoCE {
 						System.out.println("Você tem "+Saldo+"R$ de saldo.");
 					}
 					operacoes++;
-				
 			}
 		}
 	}

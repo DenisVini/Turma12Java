@@ -4,7 +4,7 @@ public class ContaCorrente extends Conta {
 
 	
 
-	private int numTalao=1;
+	private int numTalao;
 	
 	public ContaCorrente(int numero) {
 		super(numero);
@@ -17,8 +17,11 @@ public class ContaCorrente extends Conta {
 		this.numTalao = numTalao;
 	}
 	
-	public void emitirTalao(int numTalao) {
+	public void emitirTalao1() {
 		this.numTalao = this.numTalao+1;
+	}
+	public void emitirTalao1(int numTaloes) {
+		this.numTalao = this.numTalao + numTaloes;
 	}
 	
 	
