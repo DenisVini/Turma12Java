@@ -1,0 +1,36 @@
+{
+	"info": {
+		"_postman_id": "b28d1c7e-885f-4cfe-9098-46edbe2ef575",
+		"name": "Desafio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get1desafio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082",
+					"host": [
+						"localhost"
+					],
+					"port": "8082"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllDesafio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
