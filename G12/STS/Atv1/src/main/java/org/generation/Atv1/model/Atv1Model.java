@@ -8,8 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.springframework.lang.NonNull;
+import javax.validation.constraints.Size;
 
 import com.sun.istack.NotNull;
 @Entity
@@ -20,9 +19,11 @@ public class Atv1Model {
 	private long id;
 	
 	@NotNull
+	@Size(min = 5, max = 100)
 	private String titulo;
 	
 	@NotNull
+	@Size(min = 5, max = 500)
 	private String texto;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
