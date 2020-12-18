@@ -12,7 +12,6 @@
 	<groupId>org.generation</groupId>
 	<artifactId>blogPessoal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 	<name>blogPessoal</name>
 	<description>Demo project for Spring Boot</description>
 
